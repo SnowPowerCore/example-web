@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -18,6 +18,8 @@ function TourneyMatchPanel() {
     const content = useSelector(state => state);
     const dispatch = useDispatch();
     
+    useEffect(() => fetchData(dispatch), [dispatch]);
+
     return (<div className="content-panel">
                 <div>
                 {
