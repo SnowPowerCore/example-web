@@ -1,0 +1,16 @@
+.content-panel {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.update-data {
+    display: inherit;
+}
+
+.hide-all-button {
+    display: block;
+    align-self: center;
+    position: fixed;
+    bottom: 20px;
+}
