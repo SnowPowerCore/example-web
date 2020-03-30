@@ -11,7 +11,7 @@ export default dispatch => {
             if(res.error){
                 throw(res.error);
             }
-            const temp = res.data.map(x => Object.assign({}, {}, {
+            const temp = res.data.map(x => Object.assign({}, {
                 id: x.TId,
                 name: x.TournamentName,
                 expanded: true
