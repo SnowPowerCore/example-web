@@ -17,13 +17,13 @@ function TourneyMatchPanel() {
 
     const content = useSelector(state => state);
     const dispatch = useDispatch();
-    
+
     useEffect(() => fetchData(dispatch), [dispatch]);
 
     return (<div className="content-panel">
-                <div>
-                {
-                    content.tourneysSource.map(tourney => (
+        <div>
+            {
+                content.tourneysSource.map(tourney => (
                     <ExpansionPanel className="expansion-panel"
                         expandIcon={<ExpandMoreIcon />}
                         expanded={tourney.expanded}
@@ -31,37 +31,37 @@ function TourneyMatchPanel() {
                         <ExpansionPanelSummary>
                             {tourney.name}
                         </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <List>
-                                    {
-                                        content.matchesSource
+                        <ExpansionPanelDetails>
+                            <List>
+                                {
+                                    content.matchesSource
                                         .filter(x => x.TId === tourney.id)
                                         .map(match => (
-                                        <ListItem>
-                                            {match.TeamsGroup[0] + " - " + match.TeamsGroup[1]}
-                                        </ListItem>
+                                            <ListItem>
+                                                {match.TeamsGroup[0] + " - " + match.TeamsGroup[1]}
+                                            </ListItem>
                                         ))
-                                    }
-                                </List>
-                            </ExpansionPanelDetails>
+                                }
+                            </List>
+                        </ExpansionPanelDetails>
                     </ExpansionPanel>
-                    ))
-                }
-                </div>
-                <div>
-                    <Button variant="contained" className="update-data"
-                        color="primary" onClick={() => fetchData(dispatch)}>
-                        <UpdateIcon/>
-                        Обновить данные
-                    </Button>
-                </div>
-                <div className="hide-all-button">
-                    <Fab variant="extended" color="primary"
-                        onClick={() => dispatch(toggleAll())}>
-                        Раскрыть все/Закрыть все
-                    </Fab>
-                </div>
-            </div>);
+                ))
+            }
+        </div>
+        <div>
+            <Button variant="contained" className="update-data"
+                color="primary" onClick={() => fetchData(dispatch)}>
+                <UpdateIcon />
+                Обновить данные
+            </Button>
+        </div>
+        <div className="hide-all-button">
+            <Fab variant="extended" color="primary"
+                onClick={() => dispatch(toggleAll())}>
+                Раскрыть все/Закрыть все
+            </Fab>
+        </div>
+    </div>);
 }
 
 export default TourneyMatchPanel;
